@@ -1,6 +1,8 @@
 <template>
-  <div class="flex my-2 max-w-screen-lg m-auto">
-    <div class="bg-white border rounded w-full mx-2 flex items-center">
+  <div class="flex my-2 max-w-screen-lg m-auto flex-col md:flex-row">
+    <div
+      class="bg-white border mb-2 md:mb-0 rounded md:w-full mx-2 flex items-center"
+    >
       <label for="search"><i class="fas fa-search p-2"></i></label>
       <input
         id="search"
@@ -10,7 +12,9 @@
         v-model="byName"
       />
     </div>
-    <div class="bg-white border rounded w-full mx-2 flex items-center">
+    <div
+      class="bg-white border mb-2 md:mb-0 rounded md:w-full mx-2 flex items-center"
+    >
       <label for="search2"><i class="fas fa-map-marker-alt p-2"></i></label>
       <input
         id="search2"
@@ -21,7 +25,7 @@
       />
     </div>
     <button
-      class="bg-blue-400 text-white px-8 uppercase rounded mx-2"
+      class="bg-blue-400 text-white px-8 py-2 uppercase rounded mx-2 hover:bg-blue-500 transition focus:outline-none active:bg-blue-700"
       @click="onSearch"
     >
       Search
@@ -41,11 +45,14 @@
       v-model="priceTo"
     />
   </div>
-  <div class="flex flex-wrap  max-w-screen-lg m-auto">
+  <div class="flex flex-wrap justify-center max-w-screen-lg m-auto">
     <div v-for="(product, index) of products" :key="index">
       <div
         class="bg-white w-60 p-1 rounded border m-1 relative"
-        v-if="product.visible && favorites.map((el) => el.productId).includes(product.uid)"
+        v-if="
+          product.visible &&
+            favorites.map((el) => el.productId).includes(product.uid)
+        "
       >
         <button
           @click="
@@ -60,6 +67,14 @@
               favorites.map((el) => el.productId).includes(product.uid)
                 ? 'text-red-500 fas'
                 : 'text-gray-500 far',
+            ]"
+            class="fa-heart absolute hover:opacity-0 p-3 rounded-full z-50 bg-white transition"
+          ></i>
+          <i
+            :class="[
+              favorites.map((el) => el.productId).includes(product.uid)
+                ? 'text-red-500 far'
+                : 'text-gray-500 fas',
             ]"
             class="fa-heart"
           ></i>

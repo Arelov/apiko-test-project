@@ -42,7 +42,7 @@
       Your fields don't match
     </div>
     <button
-      class="mt-6 bg-green-600 text-white block w-full p-3 rounded"
+      class="mt-6 bg-green-600 text-white block w-full p-3 rounded hover:bg-green-500 transition active:bg-green-700 focus:outline-none"
       @click="onRegister"
     >
       Register
@@ -53,7 +53,9 @@
   >
     I already have an account,
     <router-link to="/authorization">
-      <button class="text-green-600 focus:outline-none">LOG IN</button>
+      <button class="text-green-600 focus:outline-none hover:text-green-700">
+        LOG IN
+      </button>
     </router-link>
   </div>
 </template>

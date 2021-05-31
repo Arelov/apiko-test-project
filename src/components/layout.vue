@@ -6,13 +6,13 @@
         <img v-else class="p-2" src="@/assets/Logo-dark.svg" alt="" />
       </router-link>
       <div class="flex items-center">
-        <router-link v-if="isAuth" to="/add-product">
-          <button class="px-12 py-1 m-2 bg-green-600 rounded text-white">
-            ADD
-          </button>
-        </router-link>
-        <router-link v-else to="/authorization">
-          <button class="px-12 py-1 m-2 bg-green-600 rounded text-white">
+        <router-link
+          v-if="isAuth"
+          :to="isAuth ? '/add-product' : '/authorization'"
+        >
+          <button
+            class="px-12 py-1 m-2 bg-green-600 rounded text-white hover:bg-green-500 transition focus:outline-none"
+          >
             ADD
           </button>
         </router-link>
@@ -20,7 +20,7 @@
           v-if="isAuth"
           @click="onLogout"
           :class="{ 'text-white': isDarkMode }"
-          class="px-12 py-1 m-2 focus:outline-none"
+          class="px-12 py-1 m-2 focus:outline-none shadow_custom"
         >
           LOGOUT
         </button>
@@ -32,16 +32,20 @@
             LOGIN
           </button>
         </router-link>
-        <router-link :to="isAuth ? '/favorites' : '/authorization'">
-          <button class="focus:outline-none p-2">
+        <router-link
+          v-if="!isFavorites"
+          :to="isAuth ? '/favorites' : '/authorization'"
+        >
+          <button class="focus:outline-none">
             <i
-              v-if="!isFavorites"
               :class="[!isDarkMode ? 'text-black' : 'text-white']"
-              class="far fa-heart"
+              class="far fa-heart hover:text-red-500 p-2 transition"
             ></i>
-            <i v-else class="fas fa-heart text-red-500"></i>
           </button>
         </router-link>
+        <button v-else class="focus:outline-none cursor-auto">
+          <i class="fas fa-heart text-red-500 p-2"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -77,4 +81,9 @@ export default defineComponent({
   },
 })
 </script>
-<style scoped></style>
+<style scoped>
+.shadow_custom:hover {
+  text-shadow: 1px 1px 6px rgb(255, 255, 255, 0.7);
+  transition: 150ms;
+}
+</style>

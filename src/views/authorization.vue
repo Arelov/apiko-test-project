@@ -15,14 +15,16 @@
       type="password"
       v-model="password.value"
     />
-    <div class="text-red-400 text-left pt-2" v-if="error">Your data is incorrect</div>
+    <div class="text-red-400 text-left pt-2" v-if="error">
+      Your data is incorrect
+    </div>
     <button
       class="block w-full text-right text-sm text-gray-500 p-2 focus:outline-none"
     >
       Don’t remember password?
     </button>
     <button
-      class="mt-2 bg-green-600 text-white block w-full p-3 rounded"
+      class="mt-2 bg-green-600 text-white block w-full p-3 rounded hover:bg-green-500 transition active:bg-green-700 focus:outline-none"
       @click="onContinue"
     >
       Continue
@@ -33,7 +35,9 @@
       class="mx-auto text-sm mt-4 bg-white max-w-sm rounded p-4 w-full text-center shadow-xl"
     >
       I have no account,
-      <button class="text-green-600 focus:outline-none">REGISTER NOW</button>
+      <button class="text-green-600 focus:outline-none hover:text-green-700">
+        REGISTER NOW
+      </button>
     </div>
   </router-link>
 </template>

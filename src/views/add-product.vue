@@ -52,7 +52,7 @@
     />
     <button
       type="submit"
-      class="mt-6 bg-green-600 text-white block w-full p-3 rounded max-w-xs m-auto"
+      class="mt-6 bg-green-600 text-white block w-full p-3 rounded max-w-xs m-auto hover:bg-green-500 transition active:bg-green-700 focus:outline-none"
     >
       SUBMIT
     </button>
