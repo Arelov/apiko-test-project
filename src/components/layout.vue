@@ -1,6 +1,9 @@
 <template>
-  <div :class="{ 'bg-indigo-900': isDarkMode }" class="w-full">
-    <div class="px-2 max-w-screen-lg flex justify-between items-center m-auto">
+  <div
+    :class="[{ my_bg: isDarkMode }, { my_main_bg: isMainPage }]"
+    class="w-full"
+  >
+    <div class="px-2 max-w-4xl flex justify-between items-center m-auto">
       <router-link to="/">
         <img v-if="isDarkMode" class="p-2" src="@/assets/Logo.svg" alt="" />
         <img v-else class="p-2" src="@/assets/Logo-dark.svg" alt="" />
@@ -60,11 +63,11 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
     const isAuth = ref(false)
-    const isDarkMode = computed(() => {
-      if (route.path === "/authorization" || route.path === "/registration")
-        return false
-      return true
-    })
+    const isMainPage = computed(() => route.path === "/")
+
+    const isDarkMode = computed(
+      () => !(route.path === "/authorization" || route.path === "/registration")
+    )
     const isFavorites = computed(() => route.path === "/favorites")
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -77,7 +80,7 @@ export default defineComponent({
       firebase.auth().signOut()
       router.push("/authorization")
     }
-    return { isDarkMode, isAuth, onLogout, isFavorites }
+    return { isDarkMode, isAuth, onLogout, isFavorites, isMainPage }
   },
 })
 </script>
@@ -85,5 +88,14 @@ export default defineComponent({
 .shadow_custom:hover {
   text-shadow: 1px 1px 6px rgb(255, 255, 255, 0.7);
   transition: 150ms;
+}
+.my_bg {
+  background: linear-gradient(180deg, #090810 0%, #171236 100%);
+}
+@media (min-width: 768px) {
+  .my_main_bg {
+    margin-bottom: -60px;
+    height: 140px;
+  }
 }
 </style>

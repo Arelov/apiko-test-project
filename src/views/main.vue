@@ -1,5 +1,5 @@
 <template>
-  <div class="flex my-2 max-w-screen-lg m-auto flex-col md:flex-row">
+  <div class="flex my-2 max-w-4xl m-auto flex-col md:flex-row md:mb-6">
     <div
       class="bg-white border mb-2 md:mb-0 rounded md:w-full mx-2 flex items-center"
     >
@@ -31,7 +31,7 @@
       Search
     </button>
   </div>
-  <div class="bg-white py-3 max-w-screen-lg m-auto">
+  <div class="bg-white py-3 max-w-4xl m-auto shadow">
     <input
       class="bg-gray-100 px-4 py-2 ml-2 border rounded"
       type="number"
@@ -45,10 +45,10 @@
       v-model="priceTo"
     />
   </div>
-  <div class="flex flex-wrap justify-center max-w-screen-lg m-auto">
+  <div class="flex flex-wrap justify-center max-w-4xl m-auto">
     <div v-for="(product, index) of products" :key="index">
       <div
-        class="bg-white w-60 p-1 rounded border m-1 relative"
+        class="bg-white w-52 p-1 rounded border m-1 relative"
         v-if="product.visible"
       >
         <button
@@ -76,7 +76,7 @@
             class="fa-heart"
           ></i>
         </button>
-        <img class="w-60 h-40" :src="product.url" alt="" />
+        <img class="w-52 h-36" :src="product.url" alt="" />
         <div class="px-2 pt-2">
           {{ product.title }}
         </div>
@@ -186,4 +186,8 @@ export default defineComponent({
   },
 })
 </script>
-<style scoped></style>
+<style scoped>
+.my_bg {
+  background: linear-gradient(180deg, #090810 0%, #171236 100%);
+}
+</style>
